@@ -47,4 +47,50 @@ const handleSubmit = async (event) => {
   
       setLoading(false);
     }
-  };
+
+  return (
+    <div className="checkout-form">
+      <h2>Payment Information</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>First Name:</label>
+          <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Last Name:</label>
+          <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Address:</label>
+          <input type="text" name="address" value={formData.address} onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Zip Code:</label>
+          <input type="text" name="zipCode" value={formData.zipCode} onChange={handleChange} required />
+        </div>
+        {/* Add more form fields for additional information */}
+        <label>
+          Card details:
+          <CardElement />
+        </label>
+        <div className="error-message">{errorMessage}</div>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Processing...' : 'Pay'}
+        </button>
+      </form>
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <div className="app">
+      <h1>Checkout</h1>
+      <Elements stripe={stripePromise}>
+        <CheckoutForm />
+      </Elements>
+    </div>
+  );
+}
+
+export default App;
