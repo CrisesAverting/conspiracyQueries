@@ -1,11 +1,10 @@
-import { Button } from "react-bootstrap";
 import '../../style.css';
 // import { Link } from "react-router-dom";
-export default function Home() {
+export default function Shop() {
     return (
         <>
             <p>
-                Welcome to Conspiracy queries
+                Welcome to Conspiracy queries Shop
             </p>
         </>
 
