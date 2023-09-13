@@ -10,6 +10,9 @@ import './index.css';
 import App from './App';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/signup';
+import Dashboard from './pages/Dashboard';
 const router = createHashRouter([
   {
     path: '/',
