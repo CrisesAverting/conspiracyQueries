@@ -1,4 +1,3 @@
-//TODO make sure that the params in the signToken are what we want to pass in 
 
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');

@@ -19,7 +19,19 @@ const router = createHashRouter([
       {
         index: true,
         element: <Home />,
+      }, 
+      {
+        path: '/login',
+        element: <Login />
       },
+       {
+        path: '/signup',
+        element: <Signup />
+      },
+      {
+        path: '/Dashboard',
+        element: <Dashboard />
+      }
     ],
   },
 ]);
