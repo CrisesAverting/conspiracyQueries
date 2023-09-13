@@ -15,8 +15,14 @@ const usersSchema = new Schema(
       default: 'null user',
     },
     password: {
-      type: String, // Change the type to String
+      type: String,
       required: true,
+    },
+    email: {
+      type: String,
+      match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      required: true,
+      unique: true,
     },
     createdAt: {
       type: Date,

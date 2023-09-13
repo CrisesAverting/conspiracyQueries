@@ -13,6 +13,14 @@ const productsSchema = new Schema(
       minlength: 4,
       default: 'null product name',
     },
+    stock: {
+      quantity: Number,
+      status: String, // e.g., "In Stock", "Out of Stock", "Low Stock"
+      restockDate: Date,
+    },
+    price: {
+      type: Number,
+    },
     categories: [
         {
           type: Schema.Types.ObjectId,
