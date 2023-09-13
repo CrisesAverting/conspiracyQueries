@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 
-const categoriesSchema = new Schema(
+const cartSchema = new Schema(
   {
     itemName: {
       type: Schema.Types.ObjectId,
@@ -28,4 +28,4 @@ const categoriesSchema = new Schema(
   }
 );
 
-module.exports = categoriesSchema;
+module.exports = cartSchema;
