@@ -14,3 +14,6 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
+
+// Define stripe payment route
+app.use('/server', require('./routes/payment'));
