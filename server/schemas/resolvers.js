@@ -1,14 +1,14 @@
-const User = require('./models/User'); // Import your Mongoose models
-const Category = require('./models/Category');
-const Product = require('./models/Product');
-const Cart = require('./models/Cart');
+const { Users, Categories, Products, Cart  } = require('../models'); // Import your Mongoose models
 
 const resolvers = {
   Query: {
     // Resolver for getting a user by ID
+   
+   
+   
     getUserById: async (_, { userId }) => {
       try {
-        return await User.findById(userId);
+        return await Users.findById(userId);
       } catch (error) {
         throw new Error('Error fetching user by ID');
       }
@@ -17,7 +17,7 @@ const resolvers = {
     // Resolver for getting all categories
     getAllCategories: async () => {
       try {
-        return await Category.find();
+        return await Categories.find();
       } catch (error) {
         throw new Error('Error fetching categories');
       }
@@ -26,7 +26,7 @@ const resolvers = {
     // Resolver for getting all products
     getAllProducts: async () => {
       try {
-        return await Product.find().populate('categories');
+        return await Products.find().populate('categories');
       } catch (error) {
         throw new Error('Error fetching products');
       }

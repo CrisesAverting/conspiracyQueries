@@ -5,8 +5,10 @@ export const ADD_PROFILE = gql`
     addProfile(name: $name, email: $email, password: $password) {
       token
       profile {
-        _id
-        name
+        userId
+        username
+        password
+        email
       }
     }
   }
@@ -15,7 +17,7 @@ export const ADD_PROFILE = gql`
 export const ADD_SKILL = gql`
   mutation addSkill($profileId: ID!, $skill: String!) {
     addSkill(profileId: $profileId, skill: $skill) {
-      _id
+      userId
       name
       skills
     }
