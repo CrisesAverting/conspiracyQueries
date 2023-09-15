@@ -1,6 +1,6 @@
-import decode from 'jwt-decode';
+import decode from "jwt-decode";
 
-class Authentic {
+class AuthService {
   
   getProfile() {
     return decode(this.getToken());
@@ -33,4 +33,4 @@ class Authentic {
   }
 }
 
-export default new Authentic();
+export default new AuthService();
