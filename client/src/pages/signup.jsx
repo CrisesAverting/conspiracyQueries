@@ -8,11 +8,11 @@ import Auth from '../utils/auth';
 
 const Signup = () => {
     const [formState, setFormState] = useState({
-        name: '',
+        username: '',
         email: '',
         password: '',
     });
-    const [addUser, { data,error }] = useMutation(ADD_PROFILE);
+    const [addUser, { data, error }] = useMutation(ADD_PROFILE);
 
     // update state based on form input changes
     const handleChange = (event) => {
@@ -49,14 +49,14 @@ const Signup = () => {
                         {data ? (
                             <p>
                                 Success! You may now head{' '}
-                                <Link to="/">back to the homepage.</Link>
+                                <Link to="/Dashboard">back to the homepage.</Link>
                             </p>
                         ) : (
                             <form onSubmit={handleFormSubmit}>
                                 <input
                                     className="form-input"
                                     placeholder="Your username"
-                                    name="name"
+                                    name="username"
                                     type="text"
                                     value={formState.name}
                                     onChange={handleChange}
