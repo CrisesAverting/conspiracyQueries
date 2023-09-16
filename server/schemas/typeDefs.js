@@ -6,6 +6,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     createdAt: String!
+   password: String!
   }
 
   type Category {
@@ -52,7 +53,7 @@ type Stock {
 
   type Mutation {
     # Define your mutations here
-    createUser(username: String!, email: String!, password: String!): User
+    createUser(username: String!, email: String!, password: String!): Auth
     createCategory(categoryName: String!): Category
     createProduct(
       productName: String!

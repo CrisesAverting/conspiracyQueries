@@ -1,4 +1,4 @@
-const { User, Categories, Products, Cart  } = require('../models'); // Import your Mongoose models
+const {User, Categories, Products, Cart  } = require('../models'); // Import your Mongoose models
 
 const {signToken, AuthenticationError} = require ('../src/utils/auth');
 
@@ -51,12 +51,11 @@ const resolvers = {
       return { token, profile };
     },
     login: async (_, { email, password }) => {
-      const profile = await User.findOne({  email});
+      const profile = await User.findOne({ email });
 
       if (!profile) {
         throw AuthenticationError;
       }
-
       const correctPw = await profile.isCorrectPassword(password);
 
       if (!correctPw) {

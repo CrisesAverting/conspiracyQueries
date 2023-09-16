@@ -54,6 +54,9 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+footer{
+  background-image: linear-gradient(to right, #646cff, #000000);
+}
 
 @media (prefers-color-scheme: light) {
   :root {
