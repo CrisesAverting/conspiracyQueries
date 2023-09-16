@@ -1,10 +1,10 @@
 {
-  "name": "conspiracy-squeries",
+  "name": "conspiracy-queries",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server.js",
  "run watch":" \"cd client && npm run dev\"",
     "watch": "nodemon",
     "seed": "node seeders/seed.js"
