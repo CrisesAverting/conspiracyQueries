@@ -1,11 +1,12 @@
-const User = require('./models/User'); // Import your Mongoose models
-const Category = require('./models/Category');
-const Product = require('./models/Product');
-const Cart = require('./models/Cart');
+const { User, Categories, Products, Cart  } = require('../models'); // Import your Mongoose models
+
+const {signToken, AuthenticationError} = require ('../src/utils/auth');
 
 const resolvers = {
   Query: {
     // Resolver for getting a user by ID
+    
+    
     getUserById: async (_, { userId }) => {
       try {
         return await User.findById(userId);
@@ -17,7 +18,7 @@ const resolvers = {
     // Resolver for getting all categories
     getAllCategories: async () => {
       try {
-        return await Category.find();
+        return await Categories.find();
       } catch (error) {
         throw new Error('Error fetching categories');
       }
@@ -26,7 +27,7 @@ const resolvers = {
     // Resolver for getting all products
     getAllProducts: async () => {
       try {
-        return await Product.find().populate('categories');
+        return await Products.find().populate('Categories');
       } catch (error) {
         throw new Error('Error fetching products');
       }
@@ -43,6 +44,31 @@ const resolvers = {
   },
 
   Mutation: {
+    createUser: async (_, { username, email, password }) => {
+      const profile = await User.create({ username, email, password });
+      const token = signToken(profile);
+
+      return { token, profile };
+    },
+    login: async (_, { email, password }) => {
+      const profile = await User.findOne({  email});
+
+      if (!profile) {
+        throw AuthenticationError;
+      }
+
+      const correctPw = await profile.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw AuthenticationError;
+      }
+
+      const token = signToken(profile);
+      return { token, profile };
+    },
+
+
+    
     // Define your mutation resolvers here
     // Example: createUser, createCategory, createProduct, createCartItem
   },
