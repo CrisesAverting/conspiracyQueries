@@ -12,8 +12,15 @@ const typeDefs = gql`
     categoryId: ID!
     categoryName: String!
   }
+type Auth {
+  token: ID!
+profile: User
+}
+  
 
-  type Stock {
+
+
+type Stock {
     quantity: Int
     status: String
     restockDate: String
@@ -40,6 +47,7 @@ const typeDefs = gql`
     getAllCategories: [Category]
     getAllProducts: [Product]
     getAllCartItems: [Cart]
+    
   }
 
   type Mutation {
@@ -58,6 +66,7 @@ const typeDefs = gql`
       image: String
       price: Float
     ): Cart
+  login(email: String!, password: String!): Auth
   }
 
   input StockInput {

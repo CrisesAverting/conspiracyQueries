@@ -12,7 +12,7 @@ const Signup = () => {
         email: '',
         password: '',
     });
-    const [addUser, { error, data }] = useMutation(ADD_PROFILE);
+    const [addUser, { data,error }] = useMutation(ADD_PROFILE);
 
     // update state based on form input changes
     const handleChange = (event) => {
@@ -25,8 +25,8 @@ const Signup = () => {
     };
 
     // submit form
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
         console.log(formState);
 
         try {
@@ -34,7 +34,7 @@ const Signup = () => {
                 variables: { ...formState },
             });
 
-            Auth.login(data.addProfile.token);
+            Auth.login(data.createUser.token);
         } catch (e) {
             console.error(e);
         }
