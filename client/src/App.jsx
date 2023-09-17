@@ -12,7 +12,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
-  url: 'graphql',
+  uri: '/graphql',
 });
 
 

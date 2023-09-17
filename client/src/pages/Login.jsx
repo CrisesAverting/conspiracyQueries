@@ -8,20 +8,22 @@ import Auth from '../utils/auth';
 const Login = (props) => {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, { error, data }] = useMutation(LOGIN_USER);
+// const [email,setEmail] = useState('')
+//     const [password, setPassword] = useState('')
 
     // update state based on form input changes
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    const handleChange = (e) => {
+        const { username, value } = e.target;
 
         setFormState({
             ...formState,
-            [name]: value,
+            [username]: value,
         });
     };
 
     // submit form
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
         console.log(formState);
         try {
             const { data } = await login({
@@ -58,7 +60,7 @@ const Login = (props) => {
                                     placeholder="Your email"
                                     name="email"
                                     type="email"
-                                    value={formState.email}
+                                    value={email}
                                     onChange={handleChange}
                                 />
                                 <input
@@ -66,7 +68,7 @@ const Login = (props) => {
                                     placeholder="******"
                                     name="password"
                                     type="password"
-                                    value={formState.password}
+                                    value={password}
                                     onChange={handleChange}
                                 />
                                 <button
