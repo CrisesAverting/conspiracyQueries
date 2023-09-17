@@ -7,38 +7,21 @@ import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Signup = () => {
-    const [formState, setFormState] = useState({
-        username: '',
-        email: '',
-        password: '',
-    });
-    const [addUser, { data,error }] = useMutation(ADD_USER);
+    const [addUser, { error, data }] = useMutation(ADD_USER);
+    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-    // update state based on form input changes
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-
-        setFormState({
-            ...formState,
-            [name]: value,
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        await addUser({
+            variables: {
+                username: username,
+                email: email,
+                password: password
+            },
         });
-    };
-
-    // submit form
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        console.log(formState);
-
-        try {
-            const { data } = await addUser({
-                variables: { ...formState },
-            });
-
-            Auth.login(data.createUser.token);
-        } catch (e) {
-            console.error(e);
-        }
-    };
+    }
 
     return (
         <main className="flex-row justify-center mb-4">
@@ -49,7 +32,7 @@ const Signup = () => {
                         {data ? (
                             <p>
                                 Success! You may now head{' '}
-                                <Link to="/Dashboard">back to the homepage.</Link>
+                                <Link to="/">back to the homepage.</Link>
                             </p>
                         ) : (
                             <form onSubmit={handleFormSubmit}>
@@ -58,24 +41,24 @@ const Signup = () => {
                                     placeholder="Your username"
                                     name="username"
                                     type="text"
-                                    value={formState.name}
-                                    onChange={handleChange}
+                                    value={username}
+                                    onChange={e => setUsername(e.target.value)}
                                 />
                                 <input
                                     className="form-input"
                                     placeholder="Your email"
                                     name="email"
                                     type="email"
-                                    value={formState.email}
-                                    onChange={handleChange}
+                                    value={email}
+                                        onChange={e => setEmail(e.target.value)}
                                 />
                                 <input
                                     className="form-input"
                                     placeholder="******"
                                     name="password"
                                     type="password"
-                                    value={formState.password}
-                                    onChange={handleChange}
+                                    value={password}
+                                        onChange={e => setPassword(e.target.value)}
                                 />
                                 <button
                                     className="btn btn-block btn-info"
