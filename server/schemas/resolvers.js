@@ -1,6 +1,22 @@
 const {User, Categories, Products, Cart  } = require('../models'); // Import your Mongoose models
 
 const {signToken, AuthenticationError} = require ('../src/utils/auth');
+const findUserByEmail = async (email) => {
+  try {
+    return await User.findOne({ email });
+  } catch (error) {
+    throw new Error('Error finding user by email');
+  }
+};
+const createUser = async (username, email, password) => {
+  try {
+    const profile = await User.create({ username, email, password });
+    const token = signToken(profile);
+    return { token, profile };
+  } catch (error) {
+    throw new Error('Error creating user');
+  }
+};
 
 const resolvers = {
   Query: {
@@ -45,13 +61,14 @@ const resolvers = {
 
   Mutation: {
     createUser: async (_, { username, email, password }) => {
-      const profile = await User.create({ username, email, password });
-      const token = signToken(profile);
+      // const profile = await User.create({ username, email, password });
+      // const token = signToken(profile);
 
-      return { token, profile };
+      return await createUser(username, email, password)
+      // { token, profile };
     },
     login: async (_, { email, password }) => {
-      const profile = await User.findOne({ email });
+      const profile = await findUserByEmail({ email });
 
       if (!profile) {
         throw AuthenticationError;
