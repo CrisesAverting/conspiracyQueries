@@ -12,12 +12,13 @@ const Login = (props) => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        await login({
+        const {data} = await login({
             variables: {
                 email: email,
                 password: password
             },
         });
+    Auth.login(data.login.token)
     }
 
     return (
