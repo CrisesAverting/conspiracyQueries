@@ -1,0 +1,27 @@
+[
+  {
+    "username": "Nick",
+    "email": "nick@conspiracy.dev",
+    "password": "password01"
+  },
+  {
+    "username": "Nicco",
+    "email": "nicco@conspiracy.dev",
+    "password": "password02"
+  },
+  {
+    "username": "Peter",
+    "email": "peter@conspiracy.dev",
+    "password": "password03"
+  },
+  {
+    "username": "Brandon",
+    "email": "brandon@conspiracy.dev",
+    "password": "password04"
+  },
+  {
+    "name": "Ben",
+    "email": "ben@COnspiracy.dev",
+    "password": "password05"
+  }
+]

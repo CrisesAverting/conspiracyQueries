@@ -1,6 +1,6 @@
-const { gql } = require('apollo-server');
 
-const typeDefs = gql`
+
+const typeDefs = `#graphql
   type User {
     userId: ID!
     username: String!
@@ -48,7 +48,9 @@ type Stock {
     getAllCategories: [Category]
     getAllProducts: [Product]
     getAllCartItems: [Cart]
-    
+   profiles:[User]!
+    profile(user:ID!): User
+  me: User 
   }
 
   type Mutation {
