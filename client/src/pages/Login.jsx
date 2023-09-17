@@ -6,41 +6,19 @@ import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
-    const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, { error, data }] = useMutation(LOGIN_USER);
-// const [email,setEmail] = useState('')
-//     const [password, setPassword] = useState('')
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    // update state based on form input changes
-    const handleChange = (e) => {
-        const { username, value } = e.target;
-
-        setFormState({
-            ...formState,
-            [username]: value,
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        await login({
+            variables: {
+                email: email,
+                password: password
+            },
         });
-    };
-
-    // submit form
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        console.log(formState);
-        try {
-            const { data } = await login({
-                variables: { ...formState },
-            });
-
-            Auth.login(data.login.token);
-        } catch (e) {
-            console.error(e);
-        }
-
-        // clear form values
-        setFormState({
-            email: '',
-            password: '',
-        });
-    };
+    }
 
     return (
         <main className="flex-row justify-center mb-4">
@@ -61,7 +39,7 @@ const Login = (props) => {
                                     name="email"
                                     type="email"
                                     value={email}
-                                    onChange={handleChange}
+                                    onChange={e => setEmail(e.target.value)}
                                 />
                                 <input
                                     className="form-input"
@@ -69,7 +47,7 @@ const Login = (props) => {
                                     name="password"
                                     type="password"
                                     value={password}
-                                    onChange={handleChange}
+                                    onChange={e => setPassword(e.target.value)}
                                 />
                                 <button
                                     className="btn btn-block btn-info"
