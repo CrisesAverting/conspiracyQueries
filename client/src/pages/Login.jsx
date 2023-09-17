@@ -6,39 +6,19 @@ import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
-    const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, { error, data }] = useMutation(LOGIN_USER);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    // update state based on form input changes
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
-
-    // submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
-        try {
-            const { data } = await login({
-                variables: { ...formState },
-            });
-
-            Auth.login(data.login.token);
-        } catch (e) {
-            console.error(e);
-        }
-
-        // clear form values
-        setFormState({
-            email: '',
-            password: '',
+        await login({
+            variables: {
+                email: email,
+                password: password
+            },
         });
-    };
+    }
 
     return (
         <main className="flex-row justify-center mb-4">
@@ -58,16 +38,16 @@ const Login = (props) => {
                                     placeholder="Your email"
                                     name="email"
                                     type="email"
-                                    value={formState.email}
-                                    onChange={handleChange}
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
                                 />
                                 <input
                                     className="form-input"
                                     placeholder="******"
                                     name="password"
                                     type="password"
-                                    value={formState.password}
-                                    onChange={handleChange}
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
                                 />
                                 <button
                                     className="btn btn-block btn-info"
