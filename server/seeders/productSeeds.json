@@ -1,0 +1,27 @@
+[
+    {
+      "productName": "Tin Foil",
+      "stock": 100,
+      "price": 5,
+      "category": "hardware"
+    },
+    {
+        "productName": "machete",
+        "stock": 20,
+        "price": 20,
+        "category": "self-defence"
+    },
+    {
+        "productName": "antibiotics",
+        "stock": 100,
+        "price": 10,
+        "category": "medical"
+    },
+    {
+        "productName": "spam-12oz",
+        "stock": 1000,
+        "price": 2,
+        "category": "food"
+    }
+  ]
+  
