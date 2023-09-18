@@ -6,7 +6,6 @@ const resolvers = {
   Query: {
     // Resolver for getting a user by ID
     
-    
     getUserById: async (_, { userId }) => {
       try {
         return await User.findById(userId);
