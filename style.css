@@ -20,6 +20,7 @@ body {
     background-color: var(--cv);
     margin: 0; 
     padding: 0; 
+}
 p {
     color: var(--ls);
 }
@@ -27,11 +28,7 @@ h1 {
     color:var(--ls)
 }
 header {
-    background-color: var(--sc);
+background-color: var(--sc);
+ color:var(--ls)
 }
- }
-    color:var(--ls)
-}
-header {
-    background-color: var(--sc);
-}
+
