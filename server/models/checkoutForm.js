@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-const stripePromise = loadStripe('pk_test_51NrpCVAfneJf8QWT3O6RGPajFGTDZGtIknR0lr7hWnyVoNb4Au92k192pYuhpwpug2mHvODqno5EiFPPKHsCgkhm005yrMjYBk');
+const stripePromise = loadStripe('process.env.STRIPE_SECRET_KEY');
 
 const handleSubmit = async (event) => {
     event.preventDefault();
