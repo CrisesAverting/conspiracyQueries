@@ -1,7 +1,7 @@
 // Importing necessary libraries and dependencies
 const express = require('express');
 const router = express.Router();
-const stripe = require('stripe')('insert key when I sign up');
+const stripe = require('stripe')('process.env.STRIPE_SECRET_KEY');
 
 // Defines the route handler for creating a payment intent
 router.post('/create-payment-intent', async (req, res) => {

@@ -4,7 +4,7 @@
   const path = require('path');
   const { authMiddleware } = require('./utils/auth');
   
-  const stripe = require('stripe')('insert key when I sign up');
+  const stripe = require('stripe')('process.env.STRIPE_SECRET_KEY');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
