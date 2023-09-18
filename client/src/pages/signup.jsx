@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
@@ -32,7 +32,7 @@ const Signup = () => {
                         {data ? (
                             <p>
                                 Success! You may now head{' '}
-                                <Link to="/">back to the homepage.</Link>
+                                <Link to="/Dashboard">Go to your Dashboard</Link>
                             </p>
                         ) : (
                             <form onSubmit={handleFormSubmit}>

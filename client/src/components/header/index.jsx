@@ -11,18 +11,27 @@ export default function Header() {
     }
     return (
         <header className=" text-dark mb-4 py-3 display-flex align-center">
-            <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
+            <div className="container">
                 <Link className="text-dark" to="/">
-                    <h1 className="m-0" style={{ fontSize: '3rem' }}>
-                        Conspiracies
+                    <h1 className="m-0" style={{ fontSize: '1rem' }}>
+                        
                     </h1>
                 </Link>
-                <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
-                    For all your bunker needs
+                <p className="m-0" style={{ fontSize: '1rem', fontWeight: '700' }}>
+                    
                 </p>
                 <div>
+                            <Link className="btn btn-lg btn-light m-2" to="/Dashboard">
+                                Dashboard
+                            </Link>
+                            <Link className="btn btn-lg btn-light m-2" to="/signup">
+                                Shop
+                            </Link>
+                            <Link className="btn btn-lg btn-light m-2" to="/signup">
+                                Cart
+                            </Link>
                     {Auth.loggedIn() ? (
-                        <button className="btn btn-lg btn-light m-2" onClick={logout}>
+                        <button className="btn btn-lg btn-primary m-2" onClick={logout}>
                             Logout
                         </button>
                     ) : (

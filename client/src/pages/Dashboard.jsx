@@ -4,7 +4,7 @@ export default function Dashboard() {
     return (
         <>
             <p>
-                Welcome to your dashboard "insert username here"
+                Welcome to your dashboard 
             </p>
         </>
 
