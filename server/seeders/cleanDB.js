@@ -13,4 +13,4 @@ module.exports = async (modelName, collectionName) => {
   } catch (err) {
     throw err;
   }
-}
+};

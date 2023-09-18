@@ -22,6 +22,12 @@
         "stock": 1000,
         "price": 2,
         "category": "food"
+    },
+    {
+        "productName": "2x4 Wood Plank",
+        "stock": 300,
+        "price": 3,
+        "category": ""
     }
   ]
   
