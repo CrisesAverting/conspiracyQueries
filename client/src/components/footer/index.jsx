@@ -2,7 +2,9 @@ import './style.css';
 function Footer() {
     return (
         <footer className="myFooter">
-<p>copyright stuff</p>
+<p>copyright stuff
+also more stuff
+            </p>
         </footer>
     );
 }

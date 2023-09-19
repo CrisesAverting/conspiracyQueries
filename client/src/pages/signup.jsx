@@ -32,7 +32,7 @@ const Signup = () => {
                         {data ? (
                             <p>
                                 Success! You may now head{' '}
-                                <Link to="/Dashboard">Go to your Dashboard</Link>
+                                <Link to="/">Go to your Dashboard</Link>
                             </p>
                         ) : (
                             <form onSubmit={handleFormSubmit}>
