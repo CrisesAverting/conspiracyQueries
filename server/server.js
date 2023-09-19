@@ -2,9 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3001; // Set your desired port
+const router = express.Router();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/cq_DB', {
+mongoose.connect('mongodb://127.0.0.1/cq_DB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -23,6 +24,17 @@ const Products = require('./models/Products');
 const User = require('./models/User');
 
 // Routes to fetch data from MongoDB collections
+
+router.get('/products', async (req, res) => {
+  try {
+    const products = await Products.find(); // Fetch all products from MongoDB
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 app.get('/api/carts', async (req, res) => {
   try {
     const carts = await Cart.find();
