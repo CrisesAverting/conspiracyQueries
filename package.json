@@ -2,7 +2,7 @@
 
   "scripts": {
 
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
+    "develop": "concurrently \"cd server && npm run watch\" \"npm run dev\"",
 
     "dev": "vite",
 
