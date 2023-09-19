@@ -1,1 +1,16 @@
-/* TODO possibly style */
+.myFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    /* You can adjust left if needed */
+    width: 100%;
+    height: auto;
+    /* Make the footer full-width */
+    background-color: #2E2951;
+    color: white;
+    /* Text color for the footer */
+    text-align: center;
+    /* Center align the content if needed */
+    padding: 10px;
+    /* Adjust padding as needed */
+}

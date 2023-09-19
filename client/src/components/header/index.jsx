@@ -21,15 +21,31 @@ export default function Header() {
                     
                 </p>
                 <div>
+                    {Auth.loggedIn() ? (
                             <Link className="btn btn-lg btn-light m-2" to="/Dashboard">
                                 Dashboard
                             </Link>
+                    ) : (
+                        <>
+                        </>
+                    )}
+                    {Auth.loggedIn() ? (
+        
                             <Link className="btn btn-lg btn-light m-2" to="/signup">
                                 Shop
                             </Link>
+                    ) : (
+                        <>
+                        </>
+                    )}
+                    {Auth.loggedIn() ? (
                             <Link className="btn btn-lg btn-light m-2" to="/signup">
                                 Cart
                             </Link>
+                    ) : (
+                        <>
+                        </>
+                    )}
                     {Auth.loggedIn() ? (
                         <button className="btn btn-lg btn-primary m-2" onClick={logout}>
                             Logout

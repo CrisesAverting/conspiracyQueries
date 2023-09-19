@@ -7,22 +7,22 @@
 * [Purpose](#purpose)
 * [Screenshots](#screenshots)
 * [Technologies Used](#technologies)
-* [Licence](#license)
+* [License](#license)
 
 ## Description
 
-This is a starter portfolio written in react
+This is a basic fullstack ecommerce site
 
 ## Links
 
-Deployment: https://crisesaverting.github.io/react-portfolio/
+Deployment: 
 
 ## Purpose
 
-Designed and built to showcase prior projects utilizing react
+Simple ecommerce site
 
 ## Screenshots
-<img src="./reactportfolio.png">
+
 
 ## Technologies
 
