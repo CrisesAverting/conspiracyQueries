@@ -4,7 +4,7 @@ export default function Home() {
     return (
         <>
             <p>
-                Welcome to Conspiracy queries
+                Welcome to Conspiracy queries home page
             </p>
         </>
 

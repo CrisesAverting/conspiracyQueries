@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const { Schema, Types, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -22,7 +23,7 @@ const usersSchema = new Schema(
       type: String,
       match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
       required: true,
-      unique: true,
+      unique: false,
     },
   },
   {
@@ -49,7 +50,22 @@ usersSchema.pre('save', async function (next) {
 });
 
 usersSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password)
-}
-const User = model('User', usersSchema)
+  return bcrypt.compare(password, this.password);
+};
+
+// Define a static method to create a new user
+usersSchema.statics.createUser = async function (userData) {
+  try {
+    // Ensure that "email" and "password" are provided in the userData object
+    if (!userData.email || !userData.password) {
+      throw new Error("Email and password are required");
+    }
+
+    const user = new this(userData);
+    return await user.save();
+  } catch (error) {
+    throw error;
+  }
+};
+const User = mongoose.model('User', usersSchema);
 module.exports = User;

@@ -31,7 +31,7 @@ export default function Header() {
                     )}
                     {Auth.loggedIn() ? (
         
-                            <Link className="btn btn-lg btn-light m-2" to="/signup">
+                            <Link className="btn btn-lg btn-light m-2" to="/shop">
                                 Shop
                             </Link>
                     ) : (
