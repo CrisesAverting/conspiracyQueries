@@ -4,7 +4,7 @@ const router = express.Router();
 const stripe = require('stripe')('process.env.STRIPE_SECRET_KEY');
 
 // Defines the route handler for creating a payment intent
-router.post('/create-payment-intent', async (req, res) => {
+router.post('./models/checkoutForm', async (req, res) => {
     const { amount, currency, payment_method } = req.body;
   
     try {
