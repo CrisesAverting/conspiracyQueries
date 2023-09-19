@@ -48,3 +48,23 @@ app.use('/server', require('./routes/payment'));
 startApolloServer();
 
 // Define stripe payment route
+app.post('/routes/payment', async (req, res) => {
+  try {
+    const { amount, currency, paymentMethod } = req.body;
+
+    // Create a payment intent using Stripe
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency,
+      payment_method: paymentMethod,
+      confirm: true,
+    });
+
+    // Payment was successful
+    res.status(200).json({ message: 'Payment successful', paymentIntent });
+    //Payment was unsuccessful
+  } catch (error) {
+    console.error('Error processing payment:', error);
+    res.status(500).json({ error: 'Payment failed' });
+  }
+});
