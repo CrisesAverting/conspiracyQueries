@@ -1,0 +1,30 @@
+/* #root{
+    
+} */
+.bg-info {
+    background-color: #2E2951;
+    
+    }
+.container {
+    background-color: #2E2951;
+    align-items:top;
+    justify-content: center;
+    
+}
+header{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #2E2951;
+  padding: 20px; 
+  display: flex;
+  justify-content: flex-end; 
+}
+
+
+
+ .card {
+    background-color: #474d4b;
+    margin-left: 12%;
+    margin-right: -9%; 
+}   

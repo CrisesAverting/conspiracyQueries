@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 
 const productsSchema = new Schema(
   {
@@ -13,12 +13,18 @@ const productsSchema = new Schema(
       minlength: 4,
       default: 'null product name',
     },
+    stock: {
+      quantity: Number,
+    },
+    price: {
+      type: Number,
+    },
     categories: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'Category', // Reference to the 'Category' model
-        },
-      ],
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Category', // Reference to the 'Category' model
+      },
+    ],
   },
   {
     toJSON: {
@@ -28,4 +34,14 @@ const productsSchema = new Schema(
   }
 );
 
-module.exports = productsSchema;
+// Define a static method to create a new product
+productsSchema.statics.createProduct = async function (productData) {
+  try {
+    const product = new this(productData);
+    return await product.save();
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = model('Product', productsSchema);
