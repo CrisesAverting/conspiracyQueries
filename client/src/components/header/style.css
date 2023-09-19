@@ -12,9 +12,13 @@
     
 }
 header{
-    display: flex;
-    background-color: #2E2951;
-
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #2E2951;
+  padding: 20px; 
+  display: flex;
+  justify-content: flex-end; 
 }
 
 
