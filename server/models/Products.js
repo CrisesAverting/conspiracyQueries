@@ -1,4 +1,5 @@
 const { Schema, Types, model } = require('mongoose');
+const mongoose = require('mongoose');
 
 const productsSchema = new Schema(
   {
@@ -43,5 +44,6 @@ productsSchema.statics.createProduct = async function (productData) {
     throw error;
   }
 };
+const Products = mongoose.model('Products', productsSchema);
 
-module.exports = model('Product', productsSchema);
+module.exports = Products;

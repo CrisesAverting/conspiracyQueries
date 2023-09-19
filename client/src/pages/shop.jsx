@@ -16,13 +16,16 @@ function ProductList() {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        console.log(response.json())
         return response.json();
       })
       .then((data) => {
+        console.log('success!');
         setProducts(data); // Update the products state with fetched data
       })
       .catch((error) => {
-        console.error('Error fetching product data:', error);
+        console.log('fuck')
+        console.error(error);
       });
   }, []);
   return (

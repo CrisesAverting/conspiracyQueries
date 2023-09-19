@@ -9,6 +9,7 @@
     "watch": "nodemon",
     "seed": "node seeders/seed.js"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",

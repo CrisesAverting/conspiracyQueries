@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { typeDefs, resolvers } = require('./schemas');
 
+
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -79,6 +80,7 @@ db.once('open', () => {
     try {
       const products = await Products.find();
       res.json(products);
+      console.log('ayy');
     } catch (err) {
       res.status(500).json({ error: 'Internal server error' });
     }
