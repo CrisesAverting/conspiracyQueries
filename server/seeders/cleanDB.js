@@ -1,14 +1,15 @@
-const models = require('../models');
-const db = require('../config/connection');
+const mongoose = require('mongoose');
 
-module.exports = async (modelName, collectionName) => {
+module.exports = async (collectionName) => {
   try {
-    let modelExists = await models[modelName].db.db.listCollections({
-      name: collectionName
-    }).toArray()
+    console.log("Those collections are sparkling clean!")
+    const collections = await mongoose.connection.db.listCollections().toArray();
+    const collectionExists = collections.some(
+      (collection) => collection.name === collectionName
+    );
 
-    if (modelExists.length) {
-      await db.dropCollection(collectionName);
+    if (collectionExists) {
+      await mongoose.connection.db.collection(collectionName).drop();
     }
   } catch (err) {
     throw err;

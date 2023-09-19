@@ -3,6 +3,10 @@ const { User, Products, Categories } = require('../models');
 const profileSeeds = require('./profileSeeds.json');
 const categorySeeds = require('./categorySeeds.json');
 const productSeeds = require('./productSeeds.json');
+const cleanDB = require("./cleanDB");
+
+// Add a flag to track whether seeding has occurred
+let seedingComplete = false;
 
 // Define a function to seed profiles
 async function seedProfiles() {
@@ -10,23 +14,27 @@ async function seedProfiles() {
     // Clear existing profiles if needed
     await cleanDB('User', 'usersSchema');
 
-    // Seed profiles
-    await User.create(profileSeeds);
+    // Seed profiles individually
+    for (const seed of profileSeeds) {
+      await User.createUser(seed);
+    }
+
     console.log('Profiles seeded successfully');
   } catch (err) {
     throw err;
   }
 }
 
+
 // Define a function to seed categories
 async function seedCategories() {
   try {
     // Clear existing categories if needed
-    await cleanDB('Category', 'categoriesSchema');
+    await cleanDB('Categories', 'categoriesSchema');
 
     // Seed categories
     // Replace 'Category' with the actual model name for categories
-    await Categories.create(categorySeeds);
+    await Categories.createCategory(categorySeeds);
     console.log('Categories seeded successfully');
   } catch (err) {
     throw err;
@@ -50,17 +58,21 @@ async function seedProducts() {
 
 db.once('open', async () => {
   try {
-    // Seed profiles
-    await seedProfiles();
+    // Check if seeding has already been completed
+    if (!seedingComplete) {
+      // Seed profiles
+      await seedProfiles();
 
-    // Seed categories
-    await seedCategories();
+      // Seed categories
+      await seedCategories();
 
-    // Seed products
-    await seedProducts();
+      // Seed products
+      await seedProducts();
 
-    console.log('All done!');
-    process.exit(0);
+      console.log('All done!');
+      seedingComplete = true; // Set the flag to true to prevent further execution
+      process.exit(0);
+    }
   } catch (err) {
     throw err;
   }
