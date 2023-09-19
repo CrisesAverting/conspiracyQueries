@@ -5,6 +5,7 @@ const { authMiddleware } = require('./utils/auth');
 const path = require('path');
 const mongoose = require('mongoose');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { typeDefs, resolvers } = require('./schemas');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -16,8 +17,8 @@ mongoose.connect('mongodb://127.0.0.1/cq_DB', {
 });
 
 const server = new ApolloServer({
-  typeDefs, // Define your GraphQL schema type definitions here
-  resolvers, // Define your GraphQL resolvers here
+  typeDefs, 
+  resolvers, 
 });
 
 const startApolloServer = async () => {
