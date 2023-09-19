@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/signup';
 import Dashboard from './pages/Dashboard';
+import ProductList from './pages/shop';
 const router = createHashRouter([
   {
     path: '/',
@@ -34,6 +35,10 @@ const router = createHashRouter([
       {
         path: '/Dashboard',
         element: <Dashboard />
+      },
+      {
+        path: '/shop',
+        element: <ProductList />
       }
     ],
   },
