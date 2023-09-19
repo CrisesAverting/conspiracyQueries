@@ -1,5 +1,4 @@
 // import '../../style.css';
-import Auth from '../utils/auth';
 import React, { useState, useEffect } from 'react';
 
 
@@ -13,13 +12,11 @@ function ProductList() {
   useEffect(() => {
     // Make an HTTP GET request to your backend API
     fetch('/api/products')
-    // console.log("im fetching products")
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return console.log(response.json)
-        // response.json();
+        return response.json();
       })
       .then((data) => {
         setProducts(data); // Update the products state with fetched data
