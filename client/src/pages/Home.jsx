@@ -3,9 +3,9 @@ import '../../../style.css';
 export default function Home() {
     return (
         <>
-            <p>
-                Welcome to Conspiracy queries
-            </p>
+            <h3>
+                Welcome to Conspiracy queries home page
+            </h3>
         </>
 
     );

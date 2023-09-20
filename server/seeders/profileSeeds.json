@@ -1,27 +1,27 @@
 [
   {
     "username": "Nick",
-    "email": "nick@conspiracy.dev",
+    "email": "nick@nick.com",
     "password": "password01"
   },
   {
     "username": "Nicco",
-    "email": "nicco@conspiracy.dev",
+    "email": "nicco@nicco.com",
     "password": "password02"
   },
   {
     "username": "Peter",
-    "email": "peter@conspiracy.dev",
+    "email": "peter@peter.com",
     "password": "password03"
   },
   {
     "username": "Brandon",
-    "email": "brandon@conspiracy.dev",
+    "email": "brandon@brandon.com",
     "password": "password04"
   },
   {
-    "name": "Ben",
-    "email": "ben@COnspiracy.dev",
+    "username": "Bennie",
+    "email": "ben@ben.com",
     "password": "password05"
   }
 ]
