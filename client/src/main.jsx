@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import React from 'react'
+=======
 import React from 'react';
+>>>>>>> d9d54fa4a1da7ab78ac9abf332d4712eb4d25dee
 import ReactDOM from 'react-dom/client';
 // Bringing in the required imports from 'react-router-dom' to set up application routing behavior
 import { createHashRouter, RouterProvider } from 'react-router-dom';
